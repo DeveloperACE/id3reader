@@ -33,7 +33,7 @@ except NameError:
 # Tracing
 _t = False
 def _trace(msg):
-    print msg
+    print(msg)
 
 # Coverage
 _c = False
@@ -556,32 +556,32 @@ class Reader:
 
     def dump(self):
         import pprint
-        print "Header:"
-        print self.header
-        print "Frames:"
+        print("Header:")
+        print(self.header)
+        print("Frames:")
         for fr in self.allFrames:
             if len(fr.rawData) > 30:
                 fr.rawData = fr.rawData[:30]
         pprint.pprint(self.allFrames)
         for fr in self.allFrames:
             if hasattr(fr, 'value'):
-                print '%s: %s' % (fr.id, _safestr(fr.value))
+                print('%s: %s' % (fr.id, _safestr(fr.value)))
             else:
-                print '%s= %s' % (fr.id, _safestr(fr.rawData))
+                print('%s= %s' % (fr.id, _safestr(fr.rawData))))
         for label in _simpleDataMapping.keys():
             v = self.getValue(label)
             if v:
-                print 'Label %s: %s' % (label, _safestr(v))
+                print('Label %s: %s' % (label, _safestr(v)))
 
     def dumpCoverage(self):
         feats = _features.keys()
         feats.sort()
         for feat in feats:
-            print "Feature %-12s: %d" % (feat, _features[feat])
+            print("Feature %-12s: %d" % (feat, _features[feat]))
 
 if __name__ == '__main__':
     if len(sys.argv) < 2 or '-?' in sys.argv:
-        print "Give me a filename"
+        print("Give me a filename")
     else:
         id3 = Reader(sys.argv[1])
         id3.dump()
